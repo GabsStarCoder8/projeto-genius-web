@@ -29,7 +29,7 @@ let round = 0;
 let isGameActive = false;
 let turn = 'computer';
 
-//Variáveis para multiplayer
+// Variáveis para multiplayer
 let numPlayers = 0;
 let currentPlayer = 1;
 let playerScores = [];
@@ -46,10 +46,8 @@ playerOptionBtns.forEach(button => {
     button.addEventListener('click', (event) => {
         numPlayers = parseInt(event.target.dataset.players);
         isCpuGame = (numPlayers === 1);
-        
         playerSelectScreen.classList.add('hidden');
         gameScreen.classList.remove('hidden');
-
         initializeGame();
     });
 });
@@ -59,28 +57,35 @@ playerOptionBtns.forEach(button => {
 function initializeGame() {
     playerScores = new Array(numPlayers).fill(0);
     currentPlayer = 1;
-    startNewTurn();
+    startNewTurn(true); // para indicar que é o início de um jogo completo
 }
 
-function startNewTurn() {
+
+function startNewTurn(isFirstTurn = false) {
     sequence = [];
     playerSequence = [];
     round = 0;
     
-    // Atualiza a UI para o jogador atual
+    // Se for um novo jogo multiplayer, reseta o jogador para 1
+    if (!isCpuGame && isFirstTurn) {
+        currentPlayer = 1;
+    }
+    
+    // Define o título inicial
     if (isCpuGame) {
-        currentPlayerTitle.innerText = `Jogador ${currentPlayer}`;
+        currentPlayerTitle.innerText = 'Vez da CPU';
     } else {
         currentPlayerTitle.innerText = `Vez do Jogador ${currentPlayer}`;
     }
     
     scoreDisplay.innerText = 0;
     roundDisplay.innerText = 0;
-
     isGameActive = true;
+    
     computerTurn();
 }
 
+// computerTurn agora só adiciona uma cor e chama a exibição
 function computerTurn() {
     turn = 'computer';
     playerSequence = [];
@@ -93,7 +98,6 @@ function computerTurn() {
 
 const playSequence = async () => {
     disablePads();
-    // Pequena pausa antes de começar a sequência
     await new Promise(resolve => setTimeout(resolve, 500)); 
 
     for (const colorIndex of sequence) {
@@ -101,27 +105,11 @@ const playSequence = async () => {
         await flash(pad);
     }
 
-    if (isCpuGame && currentPlayer === 2) { // Vez da CPU
-        currentPlayerTitle.innerText = 'CPU';
-        await cpuPlay();
-    } else { // Vez do Humano
-        turn = 'player';
-        enablePads();
-    }
+    // Após mostrar a sequência, é SEMPRE a vez do jogador 
+    currentPlayerTitle.innerText = isCpuGame ? 'Sua Vez!' : `Vez do Jogador ${currentPlayer}`;
+    turn = 'player';
+    enablePads();
 };
-
-const cpuPlay = async () => {
-    // Simula a CPU "pensando" e jogando
-    for (const colorIndex of sequence) {
-        await new Promise(resolve => setTimeout(resolve, 600)); // Pausa
-        const pad = document.getElementById(colorIndex);
-        await flash(pad);
-    }
-    // A CPU nunca erra neste modo, então passa a vez e aumenta a dificuldade
-    currentPlayer = 1;
-    currentPlayerTitle.innerText = 'Jogador 1';
-    computerTurn();
-}
 
 const flash = (pad) => {
     return new Promise((resolve) => {
@@ -155,44 +143,57 @@ function checkPlayerSequence() {
         return;
     }
 
+    // Se o jogador acertou a sequência inteira
     if (playerSequence.length === sequence.length) {
-        // Jogador acertou
         scoreDisplay.innerText = round;
         playerScores[currentPlayer - 1] = round;
         
         if (isCpuGame) {
-            // No modo CPU, a vez é trocada
-            currentPlayer = 2; // Passa para a CPU
-            setTimeout(playSequence, 1000);
-        } else {
-            // Em outros modos, a sequência só aumenta
+            // No modo CPU, a dificuldade apenas aumenta
             setTimeout(computerTurn, 1000);
+        } else {
+            // No modo multiplayer, passa a vez para o próximo jogador
+            passTurnToNextPlayer();
         }
+    }
+}
+
+function passTurnToNextPlayer() {
+    currentPlayer++;
+    
+    // Se passou do último jogador, a rodada acabou. Aumenta a dificuldade.
+    if (currentPlayer > numPlayers) {
+        currentPlayer = 1; // Volta para o primeiro jogador
+        alert(`Fim da rodada ${round}! Próxima rodada...`);
+        setTimeout(computerTurn, 1000); // Aumenta a sequência
+    } else {
+        // Se não, é a vez do próximo jogador com a mesma sequência
+        alert(`Ótimo! Agora é a vez do Jogador ${currentPlayer}.`);
+        playerSequence = [];
+        setTimeout(playSequence, 1000); // Mostra a mesma sequência
     }
 }
 
 function gameOver() {
     if (errorSound) errorSound.play();
     isGameActive = false;
-
-    // Lógica de Fim de Jogo para Múltiplos Jogadores
-    if (!isCpuGame && currentPlayer < numPlayers) {
-        alert(`Fim de jogo para o Jogador ${currentPlayer}! Pontuação: ${round - 1}. Próximo jogador!`);
-        currentPlayer++;
-        startNewTurn();
+    
+    let endMessage;
+    if (isCpuGame) {
+        endMessage = `Fim de jogo! Sua pontuação final foi: ${round - 1}`;
     } else {
-        // Fim de jogo para o último jogador ou no modo single player
-        alert(`Fim de jogo! Sua pontuação final foi: ${round - 1}`);
-        // Volta para a tela de seleção de jogadores
-        setTimeout(() => {
-            gameScreen.classList.add('hidden');
-            startScreen.classList.remove('hidden');
-        }, 2000);
+        endMessage = `Jogador ${currentPlayer} errou! Fim de jogo para todos. A maior pontuação foi ${Math.max(...playerScores)}.`;
     }
+    
+    alert(endMessage);
+
+    setTimeout(() => {
+        gameScreen.classList.add('hidden');
+        startScreen.classList.remove('hidden');
+    }, 2000);
 }
 
 const disablePads = () => pads.forEach(pad => pad.style.pointerEvents = 'none');
 const enablePads = () => pads.forEach(pad => pad.style.pointerEvents = 'auto');
 
-// Adiciona o evento de clique aos pads
 pads.forEach(pad => pad.addEventListener('click', playerClick));
