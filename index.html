@@ -1,0 +1,60 @@
+
+<!DOCTYPE htlm>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Jogo da Memória (Genius)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div id="start-screen" class="screen active">
+        <h1 class="game-title">Genius Memory Classic</h1>
+        <button id="start-game-btn" class="play-btn">▶</button>
+    </div>
+
+    <div id="player-select-screen" class="screen hidden">
+        <h2 class="select-title">Select Players:</h2>
+        <div class="options-container">
+            <button class="player-option-btn" data-players="1">1 </button>
+            <button class="player-option-btn" data-players="2">2 </button>
+            <button class="player-option-btn" data-players="3">3 </button>
+            <button class="player-option-btn" data-players="4">4 </button>
+        </div>
+    </div>
+
+    <div id="game-screen" class="screen hidden">
+        <main class="game-ui">
+            <div class="info-panel left-panel">
+                <h2 id="current-player-title">Jogador 1</h2>
+            </div>
+
+            <div class="game-board">
+                <div class="game-container">
+                    <div class="color-pad verde" id="0"></div>
+                    <div class="color-pad vermelho" id="1"></div>
+                    <div class="color-pad amarelo" id="2"></div>
+                    <div class="color-pad azul" id="3"></div>
+                    <div class="center-console">
+                        <h2>PONTOS</h2>
+                        <div id="score">0</div>
+                        </div>
+                </div>
+            </div>
+
+            <div class="info-panel right-panel">
+                <h2>ROUND</h2>
+                <h3 id="round-display">0</h3>
+            </div>
+        </main>
+    </div>
+
+    <audio id="sound0" src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3" preload="auto"></audio>
+    <audio id="sound1" src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3" preload="auto"></audio>
+    <audio id="sound2" src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3" preload="auto"></audio>
+    <audio id="sound3"src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3" preload="auto"></audio>
+    <audio id="soundError" src="URL_DO_SEU_SOM_DE_ERRO.mp3" preload="auto"></audio>
+    <script src="script.js"></script>
+</body>
+
+</html>
