@@ -9,8 +9,8 @@ body {
 }
 
 .game-board {
-    width: 450px;
-    height: 450px;
+    width: 600px;
+    height: 600px;
     aspect-ratio: 1 / 1;
     max-width: 90vw; /*garante que não sai da telas em celulares*/
     background-color: #222;
@@ -204,5 +204,5 @@ body {
 
 #current-player-title {
     font-family: 'Press Start 2P', cursive;
-    font-size: 1.5em;
+    font-size: 2em;
 }
