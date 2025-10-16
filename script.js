@@ -87,6 +87,9 @@ function startNewTurn(isFirstTurn = false) {
 
 // computerTurn agora só adiciona uma cor e chama a exibição
 function computerTurn() {
+    if (isCpuGame) {
+        currentPlayerTitle.innerText = 'Vez da CPU';
+    }
     turn = 'computer';
     playerSequence = [];
     const nextColor = Math.floor(Math.random() * 4);
