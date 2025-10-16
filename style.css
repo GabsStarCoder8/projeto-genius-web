@@ -14,7 +14,7 @@ body {
     aspect-ratio: 1 / 1;
     max-width: 90vw; /*garante que não sai da telas em celulares*/
     background-color: #222;
-    border-radius: 50%; /* Torna o tabuleiro redondo */
+    border-radius: 50%; 
     padding: 20px;
     box-shadow: 0 0 20px black;
 }
@@ -49,25 +49,25 @@ body {
     top: 0;
     left: 0;
     background-color: #00a74a;
-    border-radius: 100% 0 0 0; /* Arredonda o canto superior esquerdo */
+    border-radius: 100% 0 0 0; 
 }
 .vermelho {
     top: 0;
     right: 0;
     background-color: #9f0f17;
-    border-radius: 0 100% 0 0; /* Arredonda o canto superior direito */
+    border-radius: 0 100% 0 0; 
 }
 .amarelo {
     bottom: 0;
     left: 0;
     background-color: #cca707;
-    border-radius: 0 0 0 100%; /* Arredonda o canto inferior esquerdo */
+    border-radius: 0 0 0 100%; 
 }
 .azul {
     bottom: 0;
     right: 0;
     background-color: #094a8f;
-    border-radius: 0 0 100% 0; /* Arredonda o canto inferior direito */
+    border-radius: 0 0 100% 0; 
 }
 
 /* Sobrescreve a cor para um tom mais brilhante quando aceso */
@@ -83,7 +83,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #222;
-    width: 50%; /* Ocupa metade do espaço */
+    width: 50%; 
     height: 50%;
     border-radius: 50%;
     border: 20px solid #222;
@@ -143,7 +143,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 40px; /* Espaçamento entre elementos */
+    gap: 40px; 
 }
 
 .hidden {
@@ -153,8 +153,8 @@ body {
 .game-title {
     font-family: 'Press Start 2P', cursive;
     font-size: 3.5em;
-    color: #feda3f; /* Amarelo do Genius */
-    text-shadow: 4px 4px 0px #9f0f17; /* Sombra vermelha */
+    color: #feda3f; 
+    text-shadow: 4px 4px 0px #9f0f17; 
 }
 
 .play-btn {
@@ -163,7 +163,7 @@ body {
     font-size: 3em;
     border-radius: 10%;
     border: 5px solid white;
-    background-color: #00a74a; /* Verde do Genius */
+    background-color: #00a74a; 
     color: white;
     cursor: pointer;
     transition: transform 0.2s;
@@ -191,7 +191,7 @@ body {
     padding: 20px 40px;
     font-size: 1em;
     border: 3px solid white;
-    background-color: #094a8f; /* Azul do Genius */
+    background-color: #094a8f; 
     color: white;
     cursor: pointer;
     transition: background-color 0.2s;
@@ -205,4 +205,62 @@ body {
 #current-player-title {
     font-family: 'Press Start 2P', cursive;
     font-size: 2em;
+}
+
+/*Estilo para lidar com telas de celulares*/
+@media (max-width: 768px) {
+
+    /*Mudar o layout principal de 3 colunas para 1 coluna empilhada */
+    .game-ui {
+        grid-template-columns: 1fr; 
+        grid-template-rows: auto auto auto; 
+        padding: 20px 0; 
+        gap: 20px; 
+        height: auto; 
+    }
+
+    /*Deixar os painéis de informação na ordem correta */
+    .left-panel {
+        order: 1; 
+    }
+    .game-board {
+        order: 2; 
+    }
+    .right-panel {
+        order: 3; 
+    }
+
+    /*Ajustar o tamanho do tabuleiro do jogo */
+    .game-board {
+        width: 90vw;  
+        height: 90vw; 
+        padding: 10px; 
+    }
+    
+    /*Reduzir o tamanho das fontes para caberem na tela */
+    .game-title {
+        font-size: 2em; 
+    }
+
+    .info-panel h2 {
+        font-size: 1.5em;
+    }
+
+    .info-panel h3 {
+        font-size: 2.5em;
+    }
+
+    #overlay-text {
+        font-size: 1.8em;
+    }
+    
+    .select-title {
+        font-size: 1.5em;
+        padding: 0 10px;
+    }
+    
+    .player-option-btn {
+        padding: 15px 20px;
+        font-size: 0.8em;
+    }
 }

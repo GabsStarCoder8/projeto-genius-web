@@ -29,7 +29,7 @@ let round = 0;
 let isGameActive = false;
 let turn = 'computer';
 
-// Novas variáveis para multiplayer
+//Variáveis para multiplayer
 let numPlayers = 0;
 let currentPlayer = 1;
 let playerScores = [];
@@ -117,7 +117,7 @@ const cpuPlay = async () => {
         const pad = document.getElementById(colorIndex);
         await flash(pad);
     }
-    // CPU nunca erra neste modo, então passa a vez e aumenta a dificuldade
+    // A CPU nunca erra neste modo, então passa a vez e aumenta a dificuldade
     currentPlayer = 1;
     currentPlayerTitle.innerText = 'Jogador 1';
     computerTurn();
