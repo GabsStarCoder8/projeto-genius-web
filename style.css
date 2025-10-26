@@ -1,10 +1,13 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
+@font-face {
+    font-family: 'SuperMario256';
+    src: url(./fonts/super_mario_256/SuperMario256.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 body {
     background-color: #333;
     color: white;
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Nunito', sans-serif;
     margin: 0;
 }
 
@@ -121,7 +124,7 @@ body {
 
 /* Estilo para os painéis de informação */
 .info-panel {
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Nunito', sans-serif;
     text-transform: uppercase;
 }
 
@@ -143,7 +146,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 40px; 
+    gap: 450px; 
 }
 
 .hidden {
@@ -151,18 +154,40 @@ body {
 }
 /*Estilo de tela inicial*/
 .game-title {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 3.5em;
-    color: #feda3f; 
-    text-shadow: 4px 4px 0px #9f0f17; 
+    font-family: 'SuperMario256', cursive;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 9em;
+    line-height: 0.9;
+    text-align: center;
+    color: white;
+    text-shadow: none;
+
+    text-shadow:
+    -3px -3px 0px rgba(0,0,0,0.2),
+    3px -3px 0px rgba(0,0,0,0.2),
+    -3px 3px 0px rgba(0,0,0,0.2),
+    3px 3px 0px rgba(0,0,0,0.2),
+    6px 6px 0px rgba(0,0,0,0.4); 
 }
 
+.c-blue {color: #01A0E2;}
+.c-yellow {color: #F8B604;}
+.c-green {color: #359853;}
+.c-red {color: #E74B33;}
+
 .play-btn {
-    width: 250px;
-    height: 100px;
-    font-size: 3em;
-    border-radius: 10%;
-    border: 5px solid white;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 2.5em;
+    text-transform: uppercase;
+    color: white;
+
+    padding: 15px 70px;
+    border-radius: 50px;
+    border: 7px solid white;
+    box-shadow: 0 0 0 10px #333;
     background-color: #00a74a; 
     color: white;
     cursor: pointer;
@@ -170,12 +195,12 @@ body {
 }
 
 .play-btn:hover {
-    transform: scale(1.1);
+    transform: scale(1.0);
 }
 
 /*Estilo da tela de seleção*/
 .select-title {
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Nunito', sans-serif;
     font-size: 2em;
     color: white;
 }
@@ -187,7 +212,7 @@ body {
 }
 
 .player-option-btn {
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Nunito', sans-serif;
     padding: 20px 40px;
     font-size: 1em;
     border: 3px solid white;
@@ -203,7 +228,7 @@ body {
 
 
 #current-player-title {
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Nunito', sans-serif;
     font-size: 2em;
 }
 
