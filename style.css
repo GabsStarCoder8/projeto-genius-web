@@ -146,7 +146,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 450px; 
+    gap: 80px; 
 }
 
 .hidden {
