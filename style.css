@@ -235,6 +235,10 @@ body {
 /*Estilo para lidar com telas de celulares*/
 @media (max-width: 768px) {
 
+    .screen {
+        gap: 50px;
+    }
+
     /*Mudar o layout principal de 3 colunas para 1 coluna empilhada */
     .game-ui {
         grid-template-columns: 1fr; 
@@ -264,7 +268,8 @@ body {
     
     /*Reduzir o tamanho das fontes para caberem na tela */
     .game-title {
-        font-size: 2em; 
+        font-size: 13vw; /*tamanho baseado na largura da tela*/
+        line-height: 1.1; /*espaçamento de linha*/
     }
 
     .info-panel h2 {
@@ -288,4 +293,17 @@ body {
         padding: 15px 20px;
         font-size: 0.8em;
     }
+    /*btn de start menor*/
+    .play-btn {
+        font-size: 2em;
+        padding: 10px 50px;
+        border-width: 5px;
+        box-shadow: 0 0 0 7px #333;
+    }
+
+    .options-container{
+        flex-direction: column;
+    }
+
+
 }
