@@ -9,7 +9,10 @@
 </head>
 <body>
    <div id="start-screen" class="screen active">
-        <h1 class="game-title">
+    <video id="video-bg" autoplay loop muted playsinline>
+        <source src="assets/Trending Yellow Grid Vertical.mp4" type="video/mp4">
+    </video>
+    <h1 class="game-title">
             <span class="c-blue">G</span><span class="c-yellow">E</span><span class="c-red">N</span><span class="c-green">I</span><span class="c-yellow">U</span><span class="c-green">S</span>
             <br>
             <span class="c-red">M</span><span class="c-yellow">E</span><span class="c-blue">M</span><span class="c-green">O</span><span class="c-blue">R</span><span class="c-red">Y</span>
@@ -18,6 +21,9 @@
     </div>
 
     <div id="player-select-screen" class="screen hidden">
+        <video id="video-bg" autoplay loop muted playsinline>
+            <source src="assets/Trending Yellow Grid Vertical.mp4" type="video/mp4">
+        </video>
         <h2 class="select-title">Select Players:</h2>
         <div class="options-container">
             <button class="player-option-btn" data-players="1">1 </button>
@@ -28,6 +34,9 @@
     </div>
 
     <div id="game-screen" class="screen hidden">
+        <video id="video-bg" autoplay loop muted playsinline>
+            <source src="assets/GlitchGrid Overlay.mp4" type="video/mp4">
+        </video>
         <main class="game-ui">
             <div class="info-panel left-panel">
                 <h2 id="current-player-title">Jogador 1</h2>

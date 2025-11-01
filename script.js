@@ -93,7 +93,7 @@ const playSequence = async () => {
     }
 
     // Após a CPU jogar, passa a vez para o jogador atual da fila
-    currentPlayerTitle.innerText = `Jogador ${currentPlayer}`;
+    currentPlayerTitle.innerText = `Player ${currentPlayer}`;
     turn = 'player';
     enablePads();
 };

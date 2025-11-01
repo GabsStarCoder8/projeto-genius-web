@@ -139,6 +139,28 @@ body {
 }
 
 /*Gerenciamento de telas*/
+#video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /*cobre todo o espaõ, cortando se necessário*/
+    z-index: -1; /*joga o video para trás do title e btn*/
+    opacity: 0.8; /*deixa o video um pouco mais escuro*/
+}
+
+#gif-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /*cobre todo o espaõ, cortando se necessário*/
+    z-index: -1; /*joga o video para trás do title e btn*/
+    opacity: 0.8; /*deixa o video um pouco mais escuro*/
+}
+
 .screen {
     width: 100%;
     height: 100vh;
@@ -147,6 +169,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 80px; 
+    overflow: hidden;
 }
 
 .hidden {
@@ -162,19 +185,57 @@ body {
     text-align: center;
     color: white;
     text-shadow: none;
-
-    text-shadow:
-    -3px -3px 0px rgba(0,0,0,0.2),
-    3px -3px 0px rgba(0,0,0,0.2),
-    -3px 3px 0px rgba(0,0,0,0.2),
-    3px 3px 0px rgba(0,0,0,0.2),
-    6px 6px 0px rgba(0,0,0,0.4); 
 }
+/*Classes de cor com efeito neon + 3d*/
+.c-blue {  
+    color: #01A0E2;
+    text-shadow: 
+    0 0 10px #fff,
+    0 0 20px #01A0E2,
+    0 0 30px #01A0E2,
+    -3px -3px 0px rgba(0, 0, 0, 0.2),
+    3px -3px 0px rgba(0, 0, 0, 0.2),
+    -3px -3px 0px rgba(0, 0, 0, 0.2),
+    3px -3px 0px rgba(0, 0, 0, 0.2),
+    6px 6px 0px rgba(0, 0, 0, 0.4);
+}
+.c-yellow {
+    color: #F8B604;
+    text-shadow: 
+    0 0 10px #fff,
+    0 0 20px #F8B604,
+    0 0 30px #F8B604,
+    -3px -3px 0px rgba(0, 0, 0, 0.2),
+    3px -3px 0px rgba(0, 0, 0, 0.2),
+    -3px -3px 0px rgba(0, 0, 0, 0.2),
+    3px -3px 0px rgba(0, 0, 0, 0.2),
+    6px 6px 0px rgba(0, 0, 0, 0.4);
 
-.c-blue {color: #01A0E2;}
-.c-yellow {color: #F8B604;}
-.c-green {color: #359853;}
-.c-red {color: #E74B33;}
+}
+.c-green {
+    color: #359853;
+    text-shadow: 
+    0 0 10px #fff,
+    0 0 20px #359853,
+    0 0 30px #359853,
+    -3px -3px 0px rgba(0, 0, 0, 0.2),
+    3px -3px 0px rgba(0, 0, 0, 0.2),
+    -3px -3px 0px rgba(0, 0, 0, 0.2),
+    3px -3px 0px rgba(0, 0, 0, 0.2),
+    6px 6px 0px rgba(0, 0, 0, 0.4);
+}
+.c-red {
+    color: #E74B33;
+    text-shadow: 
+    0 0 10px #fff,
+    0 0 20px #E74B33,
+    0 0 30px #E74B33,
+    -3px -3px 0px rgba(0, 0, 0, 0.2),
+    3px -3px 0px rgba(0, 0, 0, 0.2),
+    -3px -3px 0px rgba(0, 0, 0, 0.2),
+    3px -3px 0px rgba(0, 0, 0, 0.2),
+    6px 6px 0px rgba(0, 0, 0, 0.4);
+}
 
 .play-btn {
     font-family: 'Nunito', sans-serif;
@@ -214,9 +275,9 @@ body {
 .player-option-btn {
     font-family: 'Nunito', sans-serif;
     padding: 20px 40px;
-    font-size: 1em;
+    font-size: 2em;
     border: 3px solid white;
-    background-color: #094a8f; 
+    background-color: #00a74a; 
     color: white;
     cursor: pointer;
     transition: background-color 0.2s;
